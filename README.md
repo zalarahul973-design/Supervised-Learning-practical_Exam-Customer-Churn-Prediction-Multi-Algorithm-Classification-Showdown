@@ -29,8 +29,6 @@ Step 2 to Step 8.
 
 📑 Table of Contents
 
-Step 2 - Dataset Loading & Exploratory Data
-Analysis
 
 Step 3 - Data Preprocessing & Feature
 Engineering
@@ -65,7 +63,7 @@ Skills Demonstrated
 Future Improvements
 
 
-Step 2 - Dataset Loading & Exploratory Data Analysis
+======Step 2 - Dataset Loading & Exploratory Data Analysis======
 
 
 2.1 Load & Inspect
