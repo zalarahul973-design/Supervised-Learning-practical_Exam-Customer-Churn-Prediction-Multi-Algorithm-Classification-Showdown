@@ -64,9 +64,12 @@ Skills Demonstrated
 
 Future Improvements
 
+
 Step 2 - Dataset Loading & Exploratory Data Analysis
 
+
 2.1 Load & Inspect
+
 
 The Telco Customer Churn CSV dataset is loaded using Pandas.
 
@@ -123,11 +126,15 @@ Add the Step 2 notebook/output screenshot here:
 
 ![Step 2 - Dataset Loading and EDA](docs/screenshots/step2-eda.png)
 
+
 Step 3 - Data Preprocessing & Feature Engineering
+
 
 Step 3 prepares the dataset for machine learning.
 
+
 3.1 Drop & Clean
+
 
 Drop Customer ID
 
@@ -152,7 +159,9 @@ Null values
 
 Dataset shape
 
+
 3.2 Feature Engineering
+
 
 Three additional features are created.
 
@@ -191,7 +200,9 @@ Automatic payment → 1
 
 Other payment method → 0
 
+
 3.3 Encoding
+
 
 Binary Encoding
 
@@ -224,7 +235,9 @@ Mid    → 1
 Senior → 2
 Loyal  → 3
 
+
 3.4 Train-Test Split & Scaling
+
 
 The dataset is divided into:
 
@@ -247,7 +260,9 @@ TotalCharges
 
 num_services
 
+
 3.5 Handle Class Imbalance
+
 
 The project uses SMOTE to handle class imbalance.
 
@@ -269,7 +284,9 @@ After SMOTE
 This helps give the minority churn class more representation during
 training.
 
+
 3.6 Train-Test Split
+
 
 The notebook also performs an 80/20 train-test split using:
 
@@ -285,9 +302,12 @@ train_test_split(
 
 ![Step 3 - Preprocessing](docs/screenshots/step3-preprocessing.png)
 
+
 Step 4 - Model Building: KNN & Naive Bayes
 
+
 4.1 KNN Baseline
+
 
 A K-Nearest Neighbors classifier is trained with:
 
@@ -305,7 +325,9 @@ F1 Score
 
 AUC-ROC
 
+
 4.2 KNN Hyperparameter Tuning
+
 
 The notebook tests:
 
@@ -324,7 +346,9 @@ value and F1 Score.
 
 ![KNN K vs F1](docs/screenshots/knn-k-vs-f1.png)
 
+
 4.3 Retrain KNN with Optimal K
+
 
 The KNN model is retrained using the selected best_k.
 
@@ -340,7 +364,9 @@ True Positives
 
 ![KNN Confusion Matrix](docs/screenshots/knn-confusion-matrix.png)
 
+
 4.4 KNN ROC Curve & AUC
+
 
 The project calculates:
 
@@ -357,9 +383,12 @@ and uses it in the Step 6 four-model comparison. The uploaded notebook
 does not contain a separate standalone Naive Bayes training subsection
 in Step 4.
 
+
 Step 5 - Model Building: SVM & Decision Tree
 
+
 5.1 Support Vector Machine (SVM)
+
 
 The baseline SVM uses:
 
@@ -423,7 +452,9 @@ ROC Curve
 
 ![SVM ROC Curve](docs/screenshots/svm-roc.png)
 
+
 5.2 Decision Tree Classifier
+
 
 The baseline Decision Tree uses:
 
@@ -551,7 +582,9 @@ Decision Tree
 
 ![ROC Curves](docs/screenshots/all-model-roc.png)
 
+
 📊 Precision vs Recall
+
 
 A grouped bar chart compares Precision and Recall for all four models.
 
@@ -569,17 +602,23 @@ AUC-ROC
 
 The best model is selected based on the highest Recall.
 
+
 Step 7 - Error Analysis & Interpretation
+
 
 Step 7 performs detailed error analysis on the best model.
 
+
 7.1 Best Model Prediction
+
 
 The best model is selected using the highest Recall.
 
 The test set is then predicted using that model.
 
+
 7.2 False Negatives
+
 
 False Negatives are customers who:
 
@@ -592,7 +631,9 @@ fn_mask = (y_test == 1) & (y_pred_best == 0)
 
 and reports the total number of False Negatives.
 
+
 7.3 False Negative Customer Profile
+
 
 For False Negative customers, the project analyzes:
 
@@ -604,7 +645,9 @@ Contract type
 
 ![False Negative Analysis](docs/screenshots/false-negative-analysis.png)
 
+
 7.4 Overall Churner Profile
+
 
 The False Negative profile is compared with all actual churners.
 
@@ -618,7 +661,9 @@ Contract distribution
 
 Contract percentages
 
+
 7.5 Error Analysis Pattern
+
 
 The notebook reports the observed pattern:
 
@@ -663,18 +708,24 @@ The Top 10 features are displayed and visualized.
 
 ![SVM Feature Importance](docs/screenshots/svm-feature-importance.png)
 
+
 Step 8 - Final Pipeline, Model Saving & Prediction
+
 
 Step 8 creates the final reusable machine learning pipeline.
 
+
 8.1 Create Original X and y
+
 
 The original dataframe is separated into:
 
 X_original → Features
 y_original → Churn target
 
+
 8.2 Train-Test Split
+
 
 The original customer data is split into:
 
@@ -687,7 +738,9 @@ with:
 random_state=42
 stratify=y_original
 
+
 8.3 Identify Numerical & Categorical Columns
+
 
 The pipeline identifies:
 
@@ -704,7 +757,9 @@ Columns with:
 
 object
 
+
 8.4 Create Preprocessor
+
 
 The project uses:
 
@@ -716,7 +771,9 @@ OneHotEncoder(handle_unknown="ignore")
 
 This allows the pipeline to process categorical features automatically.
 
+
 8.5 Create Final Pipeline
+
 
 The final pipeline combines:
 
@@ -726,7 +783,9 @@ Final Decision Tree
 
 The model used is final_dt.
 
+
 8.6 Train Pipeline
+
 
 The pipeline is trained using the original training data:
 
@@ -735,7 +794,9 @@ pipeline.fit(
     y_train_original
 )
 
+
 8.7 Save Model
+
 
 The trained pipeline is saved as:
 
@@ -748,7 +809,9 @@ joblib.dump(
     "churn_model.pkl"
 )
 
+
 8.8 Load Model
+
 
 The saved model is loaded again:
 
@@ -756,12 +819,16 @@ loaded_pipeline = joblib.load(
     "churn_model.pkl"
 )
 
+
 8.9 Select 5 Original Customers
+
 
 Five customers from the original test dataset are selected for
 prediction.
 
+
 8.10 Predict Churn Probability
+
 
 The pipeline predicts:
 
@@ -769,7 +836,9 @@ Churn Probability
 
 for each selected customer.
 
+
 8.11 Predict Final Label
+
 
 The pipeline predicts:
 
@@ -779,7 +848,9 @@ or:
 
 No Churn
 
+
 8.12 Final Output
+
 
 The notebook prints for five customers:
 
