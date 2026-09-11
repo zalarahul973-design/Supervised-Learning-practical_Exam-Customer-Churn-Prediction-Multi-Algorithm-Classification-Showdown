@@ -26,7 +26,7 @@ billing information.
 
 The complete workflow implemented in the notebook is covered below from
 Step 2 to Step 8.
-<img width="1536" height="1024" alt="6291d8d8-1f6e-4f70-8874-4e946f9e1106" src="https://github.com/user-attachments/assets/f9b28882-82c4-4066-9201-683daa667b07" />
+
 
 
 📑 Table of Contents
